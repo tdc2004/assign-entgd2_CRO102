@@ -1,0 +1,229 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "chinhtdph40493@gmail.com",
+      "password": "123456",
+      "username": "Tong Doanh Chinh",
+      "image": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-012.jpg"
+    },
+    {
+      "id": "2",
+      "email": "chinh123",
+      "password": "chinh123",
+      "username": "Tong Doanh Chinh",
+      "image": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-012.jpg"
+    },
+    {
+      "id": "a2d5",
+      "email": "chinhnghia806@gmail.com",
+      "password": "1234567",
+      "username": "Tong chinh"
+    },
+    {
+      "id": "dd77",
+      "email": "chinhnghia1234@gmail.com",
+      "password": "123456789",
+      "username": "Tong Doanh Chinh"
+    },
+    {
+      "id": "8321",
+      "email": "chinh123",
+      "password": "123456789",
+      "username": "Tong Doanh Chinh"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Sản Phẩm 1",
+      "price": 41,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+      "images": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-012.jpg",
+      "category": "Hoodies"
+    },
+    {
+      "id": "2",
+      "name": "Sản Phẩm 2",
+      "price": 42,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+      "images": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474074YFI/ucjh-i6e5-pgg8-5njt-o83k-mmjy-ezta-9nqh-anh-dai-dien-dep-cute-1.jpg",
+      "category": "Nike"
+    },
+    {
+      "id": "3",
+      "name": "Sản Phẩm 3",
+      "price": 43,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+      "images": "https://cafebiz.cafebizcdn.vn/162123310254002176/2023/10/25/z4813277701687-510933581a70b464516d3e146ac34edc-4735-1698218519720-16982185198431013731516.jpg",
+      "category": "H&M"
+    },
+    {
+      "id": "4",
+      "name": "Sản Phẩm 4",
+      "price": 44,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+      "images": "https://bizweb.dktcdn.net/100/438/408/files/hinh-nen-thien-nhien-4k-yody-vn-11.jpg?v=1683173528673",
+      "category": "Hoodies"
+    }
+  ],
+  "carts": [
+    {
+      "id": "2",
+      "id_product": "2",
+      "size": "S",
+      "price": 42,
+      "quantity": 1
+    },
+    {
+      "id": "3",
+      "id_product": "3",
+      "size": "L",
+      "price": 43,
+      "quantity": 2
+    },
+    {
+      "id": "f4b8",
+      "id_product": "1",
+      "size": "L",
+      "price": 41,
+      "quantity": 9
+    },
+    {
+      "id": "8098",
+      "id_product": "4",
+      "size": "XL",
+      "price": 44,
+      "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "id": "5927",
+      "products": [
+        {
+          "id": "2",
+          "id_product": "2",
+          "size": "S",
+          "price": 42,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "id_product": "3",
+          "size": "L",
+          "price": 43,
+          "quantity": 1
+        },
+        {
+          "id": "f4b8",
+          "id_product": "1",
+          "size": "L",
+          "price": 41,
+          "quantity": 8
+        }
+      ],
+      "total": 413
+    },
+    {
+      "id": "61bc",
+      "products": [
+        {
+          "id": "2",
+          "id_product": "2",
+          "size": "S",
+          "price": 42,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "id_product": "3",
+          "size": "L",
+          "price": 43,
+          "quantity": 2
+        },
+        {
+          "id": "f4b8",
+          "id_product": "1",
+          "size": "L",
+          "price": 41,
+          "quantity": 9
+        },
+        {
+          "id": "8098",
+          "id_product": "4",
+          "size": "XL",
+          "price": 44,
+          "quantity": 1
+        }
+      ],
+      "total": 541
+    }
+  ],
+  "favourite": [
+    {
+      "id": "ee45",
+      "productId": {
+        "id": "1",
+        "name": "Sản Phẩm 1",
+        "price": 41,
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+        "images": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-012.jpg",
+        "category": "Hoodies"
+      }
+    },
+    {
+      "id": "92e6",
+      "productId": {
+        "id": "2",
+        "name": "Sản Phẩm 2",
+        "price": 42,
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "description": "The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+        "images": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474074YFI/ucjh-i6e5-pgg8-5njt-o83k-mmjy-ezta-9nqh-anh-dai-dien-dep-cute-1.jpg",
+        "category": "Nike"
+      }
+    }
+  ]
+}

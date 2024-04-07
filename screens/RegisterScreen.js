@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Keyboard, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback, SafeAreaView, ToastAndroid } from 'react-native';
+import { Keyboard, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback, SafeAreaView, ToastAndroid, Alert } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
     const [email, setemail] = useState('')
@@ -9,7 +9,7 @@ const RegisterScreen = ({ navigation }) => {
 
     const [isShow, setShow] = useState(false)
     const handleRegister = async () => {
-        if ( email == "" || passWord == "" ||repassWord==""||username=="") {
+        if (email == "" || passWord == "" || repassWord == "" || username == "") {
             ToastAndroid.show('Vui lòng không bỏ trống', ToastAndroid.SHORT);
 
             return;
@@ -20,36 +20,41 @@ const RegisterScreen = ({ navigation }) => {
             return;
         }
         if (passWord !== repassWord) {
-            Alert.alert('Mật khẩu không trùng khớp.');
+            ToastAndroid.show('Mật khẩu không trùng khớp', ToastAndroid.SHORT);
             return;
         }
         try {
-            let obj_user = {
-                email: email,
-                password: passWord,
-                // repassword: rePassWord,
-                username: username,
-                
-            }
-            const res = await fetch("http://10.0.2.2:3000/users", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(obj_user)
-            })
-            const data = res.json();
-            console.log(data);
-            ToastAndroid.show('Đăng ký thành công', ToastAndroid.SHORT);
+            fetch('http://10.0.2.2:3000/users').then(res => res.json()).then(data => {
+                const user = data.find(user => user.email == email)
+                if (user) {
+                    ToastAndroid.show("Tài khoản đã tồn tại", ToastAndroid.SHORT);
+                    return;
+                }
+                let obj_user = {
+                    email: email,
+                    password: passWord,
+                    username: username,
 
-            navigation.navigate('Login')
+                }
+                fetch("http://10.0.2.2:3000/users", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(obj_user)
+                }).then(res => res.json()).then(data => {
+                    ToastAndroid.show('Đăng ký thành công', ToastAndroid.SHORT);
+                    navigation.navigate('Login')
+                })
+            })
+
         } catch (error) {
             console.error('Lỗi đăng ký:', error);
         }
     }
-    const handleForgotPass=()=>{
+    const handleForgotPass = () => {
         navigation.navigate("forget")
-      }
+    }
 
     useEffect(() => {
         Keyboard.addListener('keyboardDidShow', () => {
@@ -85,7 +90,7 @@ const RegisterScreen = ({ navigation }) => {
                                     placeholder="Username"
                                     placeholderTextColor={"#8391A1"}
                                     keyboardType="email-address"
-                                    onChangeText={txt=>setusername(txt)}
+                                    onChangeText={txt => setusername(txt)}
                                 />
                                 <TextInput
                                     style={styles.input}
@@ -105,7 +110,7 @@ const RegisterScreen = ({ navigation }) => {
                                     placeholder="Confirm password"
                                     placeholderTextColor={"#8391A1"}
                                     secureTextEntry
-                                    onChangeText={txt=>setRepassWord(txt)}
+                                    onChangeText={txt => setRepassWord(txt)}
                                 />
                                 <TouchableOpacity style={styles.loginButton} onPress={handleRegister}>
                                     <Text style={styles.loginButtonText}>Register</Text>

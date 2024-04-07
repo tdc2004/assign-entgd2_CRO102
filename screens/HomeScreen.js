@@ -4,7 +4,7 @@ import ItemClothe from '../components/ItemClothe';
 import CartContext from '../components/CartContext ';
 
 const HomeScreen = ({ navigation }) => {
-    const [data2, setdata2] = useState(null);
+    const [data2, setdata2] = useState([]);
     const data = [
         { id: 1, name: 'H&M', image: require('../img/adidas.png') },
         { id: 2, name: 'Zara', image: require('../img/adidas.png') },
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
     }
     useEffect(() => {
         getData()
-    }, [data])
+    }, [])
     // "name": "Men's Printed Pullover Hoodie",
     // "images": "https://cafebiz.cafebizcdn.vn/162123310254002176/2023/10/25/z4813277701687-510933581a70b464516d3e146ac34edc-4735-1698218519720-16982185198431013731516.jpg",
     // "id": "fe96",
@@ -42,51 +42,8 @@ const HomeScreen = ({ navigation }) => {
     const handleItemPress = (itemId) => {
         navigation.navigate('Details', { itemId: itemId });
     };
-    const addToFavourite = async (itemId) => {
-        try {
-            // Lấy danh sách các sản phẩm yêu thích từ máy chủ
-            const response = await fetch("http://10.0.2.2:3000/favourite");
-            const favouriteList = await response.json();
-            // Kiểm tra xem sản phẩm có trong danh sách yêu thích không
-            const isAlreadyInFavourite = favouriteList.some(item => item.productId.id === itemId);
-            console.log(isAlreadyInFavourite);
-            if(isAlreadyInFavourite == false){
-                ToastAndroid.show("Lỗi sản phẩm đã tồn tại !!",ToastAndroid.SHORT);
-                return;
-            }
     
-            await fetch("http://10.0.2.2:3000/favourite", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        productId: itemId
-                    })
-                });
-
-            //     ToastAndroid.show("Thêm thành công",ToastAndroid.SHORT);
-            // if (isAlreadyInFavourite) {
-            //     ToastAndroid.show("Sản phẩm đã có trong danh sách yêu thích",ToastAndroid.SHORT);
-            // } else {
-            //     // Thêm sản phẩm vào danh sách yêu thích nếu chưa tồn tại
-            //     await fetch("http://10.0.2.2:3000/favourite", {
-            //         method: "POST",
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         },
-            //         body: JSON.stringify({
-            //             productId: itemId
-            //         })
-            //     });
-
-            //     ToastAndroid.show("Thêm thành công",ToastAndroid.SHORT);
-            // }
-        } catch (error) {
-            console.error("Error adding item to favourite:", error);
-        }
-    };
-
+    
 
 
 
@@ -137,21 +94,6 @@ const HomeScreen = ({ navigation }) => {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={data2}
-                    renderItem={({ item }) => <ItemClothe item={item} onPress={handleItemPress} onFavourite={addToFavourite} />}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </View>
-            <View style={styles.section}>
-                <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionHeaderText}>New Arrival</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.viewAllText}>View All</Text>
-                    </TouchableOpacity>
-                </View>
-                <FlatList
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    data={data2}
                     renderItem={({ item }) => <ItemClothe item={item} onPress={handleItemPress} />}
                     keyExtractor={item => item.id.toString()}
                 />
@@ -167,7 +109,22 @@ const HomeScreen = ({ navigation }) => {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={data2}
-                    renderItem={({ item }) => <ItemClothe item={item} onPress={handleItemPress} />}
+                    renderItem={({ item }) => <ItemClothe item={item} onPress={handleItemPress}/>}
+                    keyExtractor={item => item.id.toString()}
+                />
+            </View>
+            <View style={styles.section}>
+                <View style={styles.sectionHeader}>
+                    <Text style={styles.sectionHeaderText}>New Arrival</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.viewAllText}>View All</Text>
+                    </TouchableOpacity>
+                </View>
+                <FlatList
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={data2}
+                    renderItem={({ item }) => <ItemClothe item={item} onPress={handleItemPress}/>}
                     keyExtractor={item => item.id.toString()}
                 />
             </View>
